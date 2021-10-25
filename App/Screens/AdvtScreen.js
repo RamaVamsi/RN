@@ -56,7 +56,6 @@ export default function AdvtScreen(props) {
             width: '100%',
             height: 80,
             marginTop: 20,
-            marginLeft: 20,
           }}></View>
       )}
       leftOpenValue={150}
