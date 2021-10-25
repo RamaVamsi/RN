@@ -12,11 +12,12 @@ import {
   NativeBaseProvider,
 } from 'react-native';
 import AdvtScreen from './App/Screens/AdvtScreen';
+import LoginScr from './App/Screens/LoginScr';
 
 function App() {
   return (
     <View>
-      <AdvtScreen />
+      <LoginScr />
     </View>
   );
 }
