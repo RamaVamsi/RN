@@ -9,7 +9,9 @@ export default function ListItemDelete() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'red',
-    width: 70,
+    backgroundColor: 'gold',
+    width: '100%',
+    height: 80,
+    marginTop: 20,
   },
 });
