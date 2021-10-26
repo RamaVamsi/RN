@@ -13,13 +13,21 @@ import {
 } from 'react-native';
 import AdvtScreen from './App/Screens/AdvtScreen';
 import LoginScr from './App/Screens/LoginScr';
+import SignUp from './App/Screens/SignUp';
 
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <LoginScr />
+      <Stack.Navigator>
+        <Stack.Screen name="Signup" component={SignUp} />
+        <Stack.Screen name="Login" component={LoginScr} />
+        <Stack.Screen name="Advt" component={AdvtScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
