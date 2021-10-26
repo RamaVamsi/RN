@@ -14,11 +14,13 @@ import {
 import AdvtScreen from './App/Screens/AdvtScreen';
 import LoginScr from './App/Screens/LoginScr';
 
+import {NavigationContainer} from '@react-navigation/native';
+
 function App() {
   return (
-    <View>
+    <NavigationContainer>
       <LoginScr />
-    </View>
+    </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
