@@ -13,51 +13,54 @@ import {
 
 import Login from '../Assets/svgs/log-in.svg';
 
-export default function LoginScr() {
-  return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <View style={styles.bigCircle}></View>
-        <View style={styles.smallCircle}></View>
-        <View style={styles.centerizedView}>
-          <View style={styles.authBox}>
-            <View style={styles.logoBox}>
-              <Login height={60} width={70} />
+export default class LoginScr extends React.Component {
+  render() {
+    return (
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={styles.container}>
+          <View style={styles.bigCircle}></View>
+          <View style={styles.smallCircle}></View>
+          <View style={styles.centerizedView}>
+            <View style={styles.authBox}>
+              <View style={styles.logoBox}>
+                <Login height={60} width={70} />
+              </View>
+              <Text style={styles.loginTitleText}>Login</Text>
+              <View style={styles.hr}></View>
+              <View style={styles.inputBox}>
+                <Text style={styles.inputLabel}>Email</Text>
+                <TextInput
+                  style={styles.input}
+                  keyboardType="email-address"
+                  textContentType="emailAddress"
+                />
+              </View>
+              <View style={styles.inputBox}>
+                <Text style={styles.inputLabel}>Password</Text>
+                <TextInput
+                  style={styles.input}
+                  secureTextEntry={true}
+                  textContentType="password"
+                />
+              </View>
+              <TouchableOpacity style={styles.loginButton}>
+                <Text style={styles.loginButtonText}>Login</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('SignUp')}>
+                <Text style={styles.registerText}>
+                  Don't have an account? Register Now
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+              </TouchableOpacity>
             </View>
-            <Text style={styles.loginTitleText}>Login</Text>
-            <View style={styles.hr}></View>
-            <View style={styles.inputBox}>
-              <Text style={styles.inputLabel}>Email</Text>
-              <TextInput
-                style={styles.input}
-                keyboardType="email-address"
-                textContentType="emailAddress"
-              />
-            </View>
-            <View style={styles.inputBox}>
-              <Text style={styles.inputLabel}>Password</Text>
-              <TextInput
-                style={styles.input}
-                secureTextEntry={true}
-                textContentType="password"
-              />
-            </View>
-            <TouchableOpacity style={styles.loginButton}>
-              <Text style={styles.loginButtonText}>Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.registerText}>
-                Don't have an account? Register Now
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-            </TouchableOpacity>
           </View>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
-  );
+      </TouchableWithoutFeedback>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

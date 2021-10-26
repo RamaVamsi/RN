@@ -14,7 +14,16 @@ import {
 import Register from '../Assets/svgs/register.svg';
 import AdvtScreen from './AdvtScreen';
 
-export default class LoginScr extends React.Component {
+export default class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      confirmPassword: '',
+    };
+  }
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -26,14 +35,17 @@ export default class LoginScr extends React.Component {
               <View style={styles.logoBox}>
                 <Register height={60} width={70} />
               </View>
-              <Text style={styles.loginTitleText}>SignUp</Text>
+              <Text style={styles.registerTitleText}>SignUp</Text>
               <View style={styles.hr}></View>
               <View style={styles.inputBox}>
                 <Text style={styles.inputLabel}>Email</Text>
                 <TextInput
                   style={styles.input}
+                  mode="outlined"
                   keyboardType="email-address"
-                  textContentType="emailAddress"
+                  textType="emailAddress"
+                  value={this.state.email}
+                  onChangeText={text => this.setState({email: text})}
                 />
               </View>
               <View style={styles.inputBox}>
@@ -41,7 +53,9 @@ export default class LoginScr extends React.Component {
                 <TextInput
                   style={styles.input}
                   secureTextEntry={true}
-                  textContentType="password"
+                  textType="password"
+                  value={this.state.password}
+                  onChangeText={text => this.setState({password: text})}
                 />
               </View>
               <View style={styles.inputBox}>
@@ -49,11 +63,19 @@ export default class LoginScr extends React.Component {
                 <TextInput
                   style={styles.input}
                   secureTextEntry={true}
-                  textContentType="password"
+                  textType="confirmpassword"
+                  value={this.state.confirmPassword}
+                  onChangeText={text => this.setState({confirmPassword: text})}
                 />
               </View>
-              <TouchableOpacity style={styles.loginButton}>
-                <Text style={styles.loginButtonText}>Login</Text>
+              <TouchableOpacity style={styles.registerButton}>
+                <Text style={styles.registerButtonText}>Register</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('SignUp')}>
+                <Text style={styles.registerText}>
+                  Exisitng User ? Login Now
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -124,7 +146,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
-  loginTitleText: {
+  registerTitleText: {
     fontSize: 26,
     fontWeight: 'bold',
     marginTop: 10,
@@ -149,13 +171,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingHorizontal: 10,
   },
-  loginButton: {
+  registerButton: {
     backgroundColor: '#0d7058',
     marginTop: 10,
     paddingVertical: 10,
     borderRadius: 4,
   },
-  loginButtonText: {
+  registerButtonText: {
     color: '#fff',
     textAlign: 'center',
     fontSize: 20,
@@ -165,6 +187,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
     fontSize: 16,
+    color: 'blue',
   },
   forgotPasswordText: {
     textAlign: 'center',
