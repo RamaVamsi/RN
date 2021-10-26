@@ -14,16 +14,15 @@ import {
 import Register from '../Assets/svgs/register.svg';
 import AdvtScreen from './AdvtScreen';
 
-export default class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
+import {firebaseApp} from './util/Firebase.js';
 
-    this.state = {
-      email: '',
-      password: '',
-      confirmPassword: '',
-    };
-  }
+export default class SignUp extends React.Component {
+  state = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
+
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -68,7 +67,31 @@ export default class SignUp extends React.Component {
                   onChangeText={text => this.setState({confirmPassword: text})}
                 />
               </View>
-              <TouchableOpacity style={styles.registerButton}>
+              <TouchableOpacity
+                style={styles.registerButton}
+                onPress={() => {
+                  if (
+                    this.state.email != '' &&
+                    this.state.password != '' &&
+                    this.state.confirmPassword != '' &&
+                    this.state.password == this.state.confirmPassword
+                  ) {
+                    firebaseApp
+                      .auth()
+                      .createUserWithEmailAndPassword(
+                        this.state.email,
+                        this.state.password,
+                      )
+                      .then(result => {
+                        console.log(result);
+                      })
+                      .catch(error => {
+                        alert(error);
+                      });
+                  } else {
+                    alert('Please Enter Login Details');
+                  }
+                }}>
                 <Text style={styles.registerButtonText}>Register</Text>
               </TouchableOpacity>
               <TouchableOpacity
