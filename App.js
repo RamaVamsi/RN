@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 
 import {
@@ -9,24 +10,23 @@ import {
   SafeAreaView,
   useState,
   KeyboardAvoidingView,
-  NativeBaseProvider,
 } from 'react-native';
+
 import AdvtScreen from './App/Screens/AdvtScreen';
 import LoginScr from './App/Screens/LoginScr';
 import SignUp from './App/Screens/SignUp';
 
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
-function App() {
+export function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Signup" component={SignUp} />
+        <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Login" component={LoginScr} />
-        <Stack.Screen name="Advt" component={AdvtScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

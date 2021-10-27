@@ -14,14 +14,20 @@ import {
 import Register from '../Assets/svgs/register.svg';
 import AdvtScreen from './AdvtScreen';
 
-import {firebaseApp} from './util/Firebase.js';
-
 export default class SignUp extends React.Component {
-  state = {
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
+  /* const [email, setEmail] = useState(email);
+  const [password, setPassword] = useState(password);
+  const [confirmPassword, setConfirmPassword] = useState(confirmPassword); */
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      confirmPassword: '',
+    };
+  }
 
   render() {
     return (
@@ -95,7 +101,9 @@ export default class SignUp extends React.Component {
                 <Text style={styles.registerButtonText}>Register</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('SignUp')}>
+                onPress={() => {
+                  this.props.navigation.navigate('Login');
+                }}>
                 <Text style={styles.registerText}>
                   Exisitng User ? Login Now
                 </Text>
